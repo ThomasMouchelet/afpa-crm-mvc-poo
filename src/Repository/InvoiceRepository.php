@@ -37,7 +37,16 @@ class InvoiceRepository extends ManagerRepository
 
     public function findAll()
     {
-        // SELECT * FROM ....
+        $sql = "SELECT * FROM invoice";
+        $result = $this->createQuery($sql);
+        $invoices = [];
+
+        foreach ($result as $row) {
+            $invoice = $this->buildObject($row);
+            array_push($invoices, $invoice);
+        }
+
+        return $invoices;
     }
 
     public function removeAll()

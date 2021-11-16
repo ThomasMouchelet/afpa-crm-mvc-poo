@@ -22,8 +22,9 @@ class Router
             if ($_GET['route'] === "fixtures") {
                 $this->customerController->loadFixtures();
                 $this->invoiceController->loadFixtures();
+            } elseif ($_GET['route'] === "dashboard") {
+                $this->invoiceController->showInvoices();
             }
-            // route == dashboard
         }
     }
 }
