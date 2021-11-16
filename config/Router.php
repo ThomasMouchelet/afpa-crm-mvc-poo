@@ -27,7 +27,7 @@ class Router
             } elseif ($_GET['route'] === "customers") {
                 $this->customerController->showCustomers();
             } elseif ($_GET['route'] === "newInvoice") {
-                $this->invoiceController->newInvoice();
+                $this->invoiceController->newInvoice($_POST);
             }
         }
     }
