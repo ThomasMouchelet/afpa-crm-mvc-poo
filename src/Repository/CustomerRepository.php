@@ -31,4 +31,10 @@ class CustomerRepository extends ManagerRepository
             $customer->getUser_id()
         ]);
     }
+
+    public function removeAll()
+    {
+        $sql = 'DELETE FROM customer';
+        $this->createQuery($sql);
+    }
 }

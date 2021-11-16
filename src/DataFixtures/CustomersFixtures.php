@@ -9,15 +9,17 @@ class CustomersFixtures
 {
     public static function load()
     {
-        for ($i = 0; $i < 10; $i++) {
+        $customerRepository = new CustomerRepository();
+        $customerRepository->removeAll();
+
+        for ($i = 1; $i <= 10; $i++) {
             $customer = new Customer();
             $customer
                 ->setEmail("customer$i@email.com")
                 ->setAddress("address $i")
                 ->setCompanyName("companyName$i");
 
-            $repo = new CustomerRepository();
-            $repo->addCustomer($customer);
+            $customerRepository->addCustomer($customer);
         }
     }
 }

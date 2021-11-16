@@ -3,24 +3,27 @@
 namespace App\config;
 
 use App\src\Controller\CustomerController;
+use App\src\Controller\InvoiceController;
 
 class Router
 {
     private $customerController;
+    private $invoiceController;
 
     public function __construct()
     {
         $this->customerController = new CustomerController();
+        $this->invoiceController = new InvoiceController();
     }
 
     public function run()
     {
         if (isset($_GET['route'])) {
-            if ($_GET['route'] === "customers_fixtures") {
+            if ($_GET['route'] === "fixtures") {
                 $this->customerController->loadFixtures();
-            } else {
-                var_dump('Errorr');
+                $this->invoiceController->loadFixtures();
             }
+            // route == dashboard
         }
     }
 }

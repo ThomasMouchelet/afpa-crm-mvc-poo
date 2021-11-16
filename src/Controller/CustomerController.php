@@ -17,18 +17,22 @@ class CustomerController
 
     public function loadFixtures()
     {
-        $customersFixtures = new CustomersFixtures();
-        $customersFixtures->load();
+        CustomersFixtures::load();
     }
 
-    public function newCustomer($post)
+    public function getAll()
     {
-        $customer = new Customer();
-        $customer
-            ->setEmail($post['email'])
-            ->setAddress($post['address'])
-            ->setCompanyName($post['companyName']);
-
-        $this->customerRepository->addCustomer($customer);
+        // var_dump($this->customerRepository->findAll());
     }
+
+    // public function newCustomer($post)
+    // {
+    //     $customer = new Customer();
+    //     $customer
+    //         ->setEmail($post['email'])
+    //         ->setAddress($post['address'])
+    //         ->setCompanyName($post['companyName']);
+
+    //     $this->customerRepository->addCustomer($customer);
+    // }
 }
