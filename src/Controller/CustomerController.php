@@ -20,6 +20,13 @@ class CustomerController
         CustomersFixtures::load();
     }
 
+    public function showCustomers()
+    {
+        $customers = $this->customerRepository->findAll();
+
+        require_once "../templates/customers.php";
+    }
+
     public function getAll()
     {
         // var_dump($this->customerRepository->findAll());

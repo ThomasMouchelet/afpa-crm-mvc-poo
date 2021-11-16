@@ -33,30 +33,22 @@
         </div>
     </nav>
 
-
-
     <div class="container">
-        <a href="?route=newInvoice" class="btn btn-primary">Add new invoices</a>
-
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Company Name</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Sending At</th>
-                    <th scope="col">Paid For</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Invoices</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($invoices as $invoice) : ?>
+                <?php foreach ($customers as $customer) : ?>
                     <tr>
-                        <th scope="row">xxxx</th>
-                        <td><?= htmlspecialchars($invoice->getAmount()) ?></td>
-                        <td><?= htmlspecialchars($invoice->getSendingAt()) ?></td>
-                        <td><?= htmlspecialchars($invoice->getPaidFor()) ?></td>
-                        <td><?= htmlspecialchars($invoice->getStatus()) ?></td>
+                        <td><?= htmlspecialchars($customer->getCompanyName()) ?></td>
+                        <td><?= htmlspecialchars($customer->getEmail()) ?></td>
+                        <td>xxxx</td>
                         <td>
                             <button class="btn btn-primary">Edit</button>
                             <button class="btn btn-danger">Delete</button>

@@ -32,6 +32,20 @@ class CustomerRepository extends ManagerRepository
         ]);
     }
 
+    public function findAll()
+    {
+        $sql = "SELECT * FROM customer";
+        $result = $this->createQuery($sql);
+        $customers = [];
+
+        foreach ($result as $row) {
+            $customer = $this->buildObject($row);
+            array_push($customers, $customer);
+        }
+
+        return $customers;
+    }
+
     public function removeAll()
     {
         $sql = 'DELETE FROM customer';
