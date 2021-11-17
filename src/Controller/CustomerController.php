@@ -5,8 +5,9 @@ namespace App\src\Controller;
 use App\src\DataFixtures\CustomersFixtures;
 use App\src\Entity\Customer;
 use App\src\Repository\CustomerRepository;
+use App\src\Controller\AbstractController;
 
-class CustomerController
+class CustomerController extends AbstractController
 {
     private $customerRepository;
 
@@ -24,22 +25,8 @@ class CustomerController
     {
         $customers = $this->customerRepository->findAll();
 
-        require_once "../templates/customers.php";
+        $this->render("customers", [
+            "customers" => $customers
+        ]);
     }
-
-    public function getAll()
-    {
-        // var_dump($this->customerRepository->findAll());
-    }
-
-    // public function newCustomer($post)
-    // {
-    //     $customer = new Customer();
-    //     $customer
-    //         ->setEmail($post['email'])
-    //         ->setAddress($post['address'])
-    //         ->setCompanyName($post['companyName']);
-
-    //     $this->customerRepository->addCustomer($customer);
-    // }
 }

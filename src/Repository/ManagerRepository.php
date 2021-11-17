@@ -81,8 +81,6 @@ class ManagerRepository
         return $entityNameSpace;
     }
 
-
-
     public function findAll()
     {
         $tableName = $this->getTableName();

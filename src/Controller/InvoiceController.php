@@ -6,8 +6,9 @@ use App\src\DataFixtures\InvoicesFixtures;
 use App\src\Entity\Invoice;
 use App\src\Repository\CustomerRepository;
 use App\src\Repository\InvoiceRepository;
+use App\src\Controller\AbstractController;
 
-class InvoiceController
+class InvoiceController extends AbstractController
 {
     private $invoiceRepository;
 
@@ -26,7 +27,9 @@ class InvoiceController
     {
         $invoices = $this->invoiceRepository->findAll();
 
-        require_once "../templates/dashboard.php";
+        $this->render("dashboard", [
+            'invoices' => $invoices
+        ]);
     }
 
     public function newInvoice($post)
@@ -42,6 +45,7 @@ class InvoiceController
             $this->invoiceRepository->addInvoice($invoice);
             header("Location: ?route=dashboard");
         }
-        require_once "../templates/invoice_form.php";
+
+        $this->render("invoice_form");
     }
 }
