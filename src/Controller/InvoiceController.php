@@ -4,6 +4,7 @@ namespace App\src\Controller;
 
 use App\src\DataFixtures\InvoicesFixtures;
 use App\src\Entity\Invoice;
+use App\src\Repository\CustomerRepository;
 use App\src\Repository\InvoiceRepository;
 
 class InvoiceController
@@ -13,6 +14,7 @@ class InvoiceController
     public function __construct()
     {
         $this->invoiceRepository = new InvoiceRepository();
+        $this->customerRepository = new CustomerRepository();
     }
 
     public function loadFixtures()

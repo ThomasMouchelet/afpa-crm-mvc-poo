@@ -7,21 +7,6 @@ use App\src\Repository\ManagerRepository;
 
 class InvoiceRepository extends ManagerRepository
 {
-    public function buildObject($row)
-    {
-        $invoice = new Invoice();
-        $invoice
-            ->setId($row->id)
-            ->setAmount($row->amount)
-            ->setSendingAt($row->sendingAt)
-            ->setPaidFor($row->paidFor)
-            ->setStatus($row->status)
-            ->setCustomer_id($row->customer_id)
-            ->setUser_id($row->user_id);
-
-        return $invoice;
-    }
-
     public function addInvoice(object $invoice)
     {
         $sql = 'INSERT INTO invoice (amount, sendingAt, paidFor, status, customer_id, user_id) VALUES (?, ?, ?, ?, ?, ?)';
@@ -33,25 +18,5 @@ class InvoiceRepository extends ManagerRepository
             $invoice->getCustomer_id(),
             $invoice->getUser_id()
         ]);
-    }
-
-    public function findAll()
-    {
-        $sql = "SELECT * FROM invoice";
-        $result = $this->createQuery($sql);
-        $invoices = [];
-
-        foreach ($result as $row) {
-            $invoice = $this->buildObject($row);
-            array_push($invoices, $invoice);
-        }
-
-        return $invoices;
-    }
-
-    public function removeAll()
-    {
-        $sql = 'DELETE FROM invoice';
-        $this->createQuery($sql);
     }
 }
