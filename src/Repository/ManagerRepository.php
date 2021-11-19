@@ -81,6 +81,17 @@ class ManagerRepository
         return $entityNameSpace;
     }
 
+    public function findOne($id)
+    {
+        $tableName = $this->getTableName();
+        $sql = "SELECT * FROM $tableName WHERE id = ?";
+        $result = $this->createQuery($sql, [$id]);
+        $row = $result->fetch();
+        $entity = $this->buildObject($row);
+
+        return $entity;
+    }
+
     public function findAll()
     {
         $tableName = $this->getTableName();

@@ -17,4 +17,17 @@ class CustomerRepository extends ManagerRepository
             $customer->getUser_id()
         ]);
     }
+
+    public function edit($customer)
+    {
+        var_dump($customer);
+        die();
+        $sql = "UPDATE customer SET email = ?,  address = ?, companyName = ? WHERE id = ?";
+        $this->createQuery($sql, [
+            $customer->getEmail(),
+            $customer->getAddress(),
+            $customer->getCompanyName(),
+            $customer->getId(),
+        ]);
+    }
 }

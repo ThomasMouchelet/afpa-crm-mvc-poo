@@ -18,7 +18,7 @@
                 <td><?= htmlspecialchars($customer->getEmail()) ?></td>
                 <td>xxxx</td>
                 <td>
-                    <button class="btn btn-primary">Edit</button>
+                    <a href="?route=customers/edit&id=<?= htmlspecialchars($customer->getId()) ?>" class="btn btn-primary">Edit</a>
                     <a href="?route=customers/delete&id=<?= htmlspecialchars($customer->getId()) ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
