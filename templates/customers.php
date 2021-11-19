@@ -1,5 +1,7 @@
 <?php $this->title = "Customers"; ?>
 
+<a href="?route=customers/add" class="btn btn-primary">Add new customer</a>
+
 <table class="table">
     <thead>
         <tr>

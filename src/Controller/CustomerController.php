@@ -29,4 +29,20 @@ class CustomerController extends AbstractController
             "customers" => $customers
         ]);
     }
+
+    public function newCustomer($post)
+    {
+        if (isset($post['submit'])) {
+            $customer = new Customer();
+            $customer
+                ->setEmail($post["email"])
+                ->setAddress($post["address"])
+                ->setCompanyName($post["companyName"]);
+
+            $this->customerRepository->addCustomer($customer);
+            header("Location: ?route=customers");
+        }
+
+        $this->render("customer_form");
+    }
 }

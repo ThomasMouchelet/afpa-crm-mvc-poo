@@ -1,6 +1,6 @@
 <?php $this->title = "Add new invoice"; ?>
 
-<form class="mt-5" method="post" action="?route=newInvoice">
+<form class="mt-5" method="post" action="?route=invoices/add">
     <div class="mb-3">
         <input type="number" class="form-control" name="amount">
     </div>

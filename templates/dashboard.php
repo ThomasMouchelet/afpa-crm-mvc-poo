@@ -1,6 +1,6 @@
 <?php $this->title = "Dashboard"; ?>
 
-<a href="?route=newInvoice" class="btn btn-primary">Add new invoices</a>
+<a href="?route=invoices/add" class="btn btn-primary">Add new invoices</a>
 
 <table class="table">
     <thead>
