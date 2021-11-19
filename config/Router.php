@@ -28,7 +28,11 @@ class Router
                 $this->customerController->showCustomers();
             } elseif ($_GET['route'] === "newInvoice") {
                 $this->invoiceController->newInvoice($_POST);
+            } else {
+                // 404
             }
+        } else {
+            $this->invoiceController->showInvoices();
         }
     }
 }

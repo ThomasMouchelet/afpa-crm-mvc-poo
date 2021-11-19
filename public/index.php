@@ -1,10 +1,10 @@
 <?php
 require_once "../config/dev.php";
-require_once "../config/Autoloader.php";
+require_once "../vendor/autoload.php";
 
-use App\config\Autoloader;
-
-Autoloader::register();
+// require_once "../config/Autoloader.php";
+// use App\config\Autoloader;
+// Autoloader::register();
 
 use App\config\Router;
 
