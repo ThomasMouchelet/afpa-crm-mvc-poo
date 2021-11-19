@@ -102,4 +102,11 @@ class ManagerRepository
         $sql = "DELETE FROM $tableName";
         $this->createQuery($sql);
     }
+
+    public function delete($id)
+    {
+        $tableName = $this->getTableName();
+        $sql = "DELETE FROM $tableName WHERE id = ?";
+        $this->createQuery($sql, [$id]);
+    }
 }

@@ -45,4 +45,13 @@ class CustomerController extends AbstractController
 
         $this->render("customer_form");
     }
+
+    public function deleteCustomer($get)
+    {
+        if (isset($get['id'])) {
+            $this->customerRepository->delete($get['id']);
+
+            header("Location: ?route=customers");
+        }
+    }
 }

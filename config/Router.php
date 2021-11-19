@@ -30,6 +30,8 @@ class Router
                 $this->invoiceController->newInvoice($_POST);
             } elseif ($_GET['route'] === "customers/add") {
                 $this->customerController->newCustomer($_POST);
+            } elseif ($_GET['route'] === "customers/delete") {
+                $this->customerController->deleteCustomer($_GET);
             } else {
                 // 404
             }

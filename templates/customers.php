@@ -19,7 +19,7 @@
                 <td>xxxx</td>
                 <td>
                     <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    <a href="?route=customers/delete&id=<?= htmlspecialchars($customer->getId()) ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>
