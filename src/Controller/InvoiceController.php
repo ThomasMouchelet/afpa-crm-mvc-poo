@@ -46,6 +46,10 @@ class InvoiceController extends AbstractController
             header("Location: ?route=dashboard");
         }
 
-        $this->render("invoice_form");
+        $customers = $this->customerRepository->findAll();
+
+        $this->render("invoice_form", [
+            'customers' => $customers
+        ]);
     }
 }

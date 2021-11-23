@@ -1,6 +1,6 @@
 <?php $this->title = "Add new invoice"; ?>
 
-<form class="mt-5" method="post" action="?route=invoices/add">
+<form class="mt-5" method="post">
     <div class="mb-3">
         <input type="number" class="form-control" name="amount">
     </div>
@@ -9,6 +9,15 @@
     </div>
     <div class="mb-3">
         <input type="date" class="form-control" name="paidFor">
+    </div>
+    <div class="mb-3">
+        <select name="customer_id" class="form-select">
+            <?php foreach ($customers as $customer) : ?>
+                <option value="<?= $customer->getId() ?>">
+                    <?= $customer->getCompanyName() ?>
+                </option>
+            <?php endforeach ?>
+        </select>
     </div>
     <div class="mb-3">
         <select class="form-select" aria-label="Default select example" name="status">
