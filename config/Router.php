@@ -2,6 +2,7 @@
 
 namespace App\config;
 
+use App\src\Controller\AuthController;
 use App\src\Controller\CustomerController;
 use App\src\Controller\InvoiceController;
 
@@ -9,11 +10,13 @@ class Router
 {
     private $customerController;
     private $invoiceController;
+    private $authController;
 
     public function __construct()
     {
         $this->customerController = new CustomerController();
         $this->invoiceController = new InvoiceController();
+        $this->authController = new AuthController();
     }
 
     public function run()
@@ -34,6 +37,10 @@ class Router
                 $this->customerController->formCustomer($_POST, $_GET);
             } elseif ($_GET['route'] === "customers/delete") {
                 $this->customerController->deleteCustomer($_GET);
+            } elseif ($_GET['route'] === "auth/register") {
+                $this->authController->register($_POST);
+            } elseif ($_GET['route'] === "auth/login") {
+                $this->authController->login($_POST);
             } else {
                 // 404
             }
