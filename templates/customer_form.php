@@ -2,7 +2,7 @@
 
 <h1><?= $editMode ? "Edit" : "Add new" ?> Customer</h1>
 
-<form class="mt-5" method="post" action="?route=customers/add">
+<form class="mt-5" method="post">
     <div class="mb-3">
         <input type="email" class="form-control" name="email" placeholder="email" value="<?= htmlspecialchars($customer->getEmail()); ?>">
     </div>

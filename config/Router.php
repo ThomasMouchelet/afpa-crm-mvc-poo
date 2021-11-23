@@ -31,7 +31,7 @@ class Router
             } elseif ($_GET['route'] === "customers/add") {
                 $this->customerController->formCustomer($_POST);
             } elseif ($_GET['route'] === "customers/edit") {
-                $this->customerController->formCustomer($_POST);
+                $this->customerController->formCustomer($_POST, $_GET);
             } elseif ($_GET['route'] === "customers/delete") {
                 $this->customerController->deleteCustomer($_GET);
             } else {

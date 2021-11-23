@@ -30,10 +30,10 @@ class CustomerController extends AbstractController
         ]);
     }
 
-    public function formCustomer($post)
+    public function formCustomer($post, $get = null)
     {
-        if (isset($_GET['id'])) {
-            $customer = $this->customerRepository->findOne($_GET['id']);
+        if (isset($get['id'])) {
+            $customer = $this->customerRepository->findOne($get['id']);
         } else {
             $customer = new Customer();
         }
@@ -50,11 +50,12 @@ class CustomerController extends AbstractController
 
         if (isset($post['edit'])) {
             $customer
+                ->setId($get["id"])
                 ->setEmail($post["email"])
                 ->setAddress($post["address"])
                 ->setCompanyName($post["companyName"]);
 
-            // $this->customerRepository->editCustomer($customer);
+            $this->customerRepository->editCustomer($customer);
             header("Location: ?route=customers");
         }
 
