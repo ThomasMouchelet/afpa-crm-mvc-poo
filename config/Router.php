@@ -22,7 +22,6 @@ class Router
     public function run()
     {
         session_start();
-
         if (!isset($_SESSION['id']) && $_GET['route'] !== "auth/register") {
             $this->authController->login($_POST);
         }

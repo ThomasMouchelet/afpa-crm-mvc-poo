@@ -16,6 +16,7 @@ class InvoiceController extends AbstractController
     {
         $this->invoiceRepository = new InvoiceRepository();
         $this->customerRepository = new CustomerRepository();
+        // $this->checkIsLogin();
     }
 
     public function loadFixtures()

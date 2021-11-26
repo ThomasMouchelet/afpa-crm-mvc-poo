@@ -31,4 +31,14 @@ class AbstractController
             header('Location: ?route=notFount');
         }
     }
+
+    public function checkIsLogin()
+    {
+        if (session_status() === 0) {
+            session_start();
+        }
+        if (!isset($_SESSION['id'])) {
+            header('Location: ?route=auth/login');
+        }
+    }
 }

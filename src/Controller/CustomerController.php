@@ -14,6 +14,7 @@ class CustomerController extends AbstractController
     public function __construct()
     {
         $this->customerRepository = new CustomerRepository();
+        // $this->checkIsLogin();
     }
 
     public function loadFixtures()

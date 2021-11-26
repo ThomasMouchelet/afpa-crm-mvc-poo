@@ -30,6 +30,7 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <a href="?route=auth/logout" class="btn btn-danger">Logout</a>
+                <a href="?route=user/account" class="btn btn-secondary">Account</a>
             </div>
         </div>
     </nav>
