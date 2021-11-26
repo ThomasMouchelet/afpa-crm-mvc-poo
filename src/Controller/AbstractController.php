@@ -14,7 +14,8 @@ class AbstractController
 
         $view = $this->renderFile('../templates/base.php', [
             'title' => $this->title,
-            'content' => $content
+            'content' => $content,
+            'isLogin' => $this->checkIsLogin()
         ]);
 
         echo $view;
@@ -37,8 +38,7 @@ class AbstractController
         if (session_status() === 0) {
             session_start();
         }
-        if (!isset($_SESSION['id'])) {
-            header('Location: ?route=auth/login');
-        }
+
+        return isset($_SESSION['id']) ? true : false;
     }
 }

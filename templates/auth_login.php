@@ -5,5 +5,6 @@
     <div class="mb-3">
         <input class="form-control" type="password" name="password" placeholder="Entrez votre password">
     </div>
+    <a class="btn btn-secondary" href="?route=auth/register">Créer un compte</a>
     <input type="submit" value="login" name="submit" class="btn btn-primary">
 </form>

@@ -5,18 +5,21 @@ namespace App\config;
 use App\src\Controller\AuthController;
 use App\src\Controller\CustomerController;
 use App\src\Controller\InvoiceController;
+use App\src\Controller\UserController;
 
 class Router
 {
     private $customerController;
     private $invoiceController;
     private $authController;
+    private $userController;
 
     public function __construct()
     {
         $this->customerController = new CustomerController();
         $this->invoiceController = new InvoiceController();
         $this->authController = new AuthController();
+        $this->userController = new UserController();
     }
 
     public function run()
@@ -48,6 +51,8 @@ class Router
                 $this->authController->login($_POST);
             } elseif ($_GET['route'] === "auth/logout") {
                 $this->authController->logout();
+            } elseif ($_GET['route'] === "user/account") {
+                $this->userController->account();
             } else {
                 // 404
             }
