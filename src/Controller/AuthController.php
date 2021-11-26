@@ -36,15 +36,32 @@ class AuthController extends AbstractController
     public function login($post)
     {
         if (isset($post['submit'])) {
-            $hashPassword = password_hash($post['password'] . SECRET_KEY, PASSWORD_BCRYPT);
             $user = new User();
             $user
                 ->setEmail($post['email'])
-                ->setPassword($hashPassword);
+                ->setPassword($post['password']);
 
-            $this->userRepository->loginUser($user);
+            $result = $this->userRepository->loginUser($user);
+
+            if ($result && $result['isValidPassword']) {
+                session_start();
+                $_SESSION['id'] = $result['user']->id;
+                $_SESSION['email'] = $result['user']->email;
+
+                header('Location: ?route=dashboard');
+            } else {
+                $this->render('auth_login');
+            }
         }
 
         $this->render('auth_login');
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+
+        header('Location: ?route=auth/login');
     }
 }

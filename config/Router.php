@@ -21,6 +21,12 @@ class Router
 
     public function run()
     {
+        session_start();
+
+        if (!isset($_SESSION['id']) && $_GET['route'] !== "auth/register") {
+            $this->authController->login($_POST);
+        }
+
         if (isset($_GET['route'])) {
             if ($_GET['route'] === "fixtures") {
                 $this->customerController->loadFixtures();
@@ -41,6 +47,8 @@ class Router
                 $this->authController->register($_POST);
             } elseif ($_GET['route'] === "auth/login") {
                 $this->authController->login($_POST);
+            } elseif ($_GET['route'] === "auth/logout") {
+                $this->authController->logout();
             } else {
                 // 404
             }
