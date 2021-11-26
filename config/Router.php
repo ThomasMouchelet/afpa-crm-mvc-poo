@@ -52,7 +52,7 @@ class Router
             } elseif ($_GET['route'] === "auth/logout") {
                 $this->authController->logout();
             } elseif ($_GET['route'] === "user/account") {
-                $this->userController->account();
+                $this->userController->account($_POST);
             } else {
                 // 404
             }

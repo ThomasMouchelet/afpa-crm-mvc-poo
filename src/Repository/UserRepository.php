@@ -37,4 +37,20 @@ class UserRepository extends ManagerRepository
 
         return null;
     }
+
+    public function update(object $user)
+    {
+        $sql = "UPDATE user SET email = ? WHERE id = ?";
+
+        var_dump($user);
+        die();
+
+        if ($user->getPassword()) {
+        }
+
+        $this->createQuery($sql, [
+            $user->getEmail(),
+            $user->getId(),
+        ]);
+    }
 }
