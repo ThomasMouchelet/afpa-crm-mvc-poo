@@ -47,21 +47,19 @@ class AuthController extends AbstractController
                 session_start();
                 $_SESSION['id'] = $result['user']->id;
                 $_SESSION['email'] = $result['user']->email;
-
                 header('Location: ?route=dashboard');
             } else {
-                $this->render('auth/auth_login.html.twig');
+                header('Location: ?route=auth/login');
             }
         }
+
 
         $this->render('auth/auth_login.html.twig');
     }
 
     public function logout()
     {
-        session_start();
         session_destroy();
-
         header('Location: ?route=auth/login');
     }
 }

@@ -25,8 +25,12 @@ class Router
     public function run()
     {
         session_start();
-        if (!isset($_SESSION['id']) && $_GET['route'] !== "auth/register") {
-            $this->authController->login($_POST);
+        if (!isset($_SESSION['id'])) {
+            if ($_GET['route'] !== "auth/register" || $_GET['route'] === "auth/login") {
+                $this->authController->login($_POST);
+            } else {
+                $this->authController->login($_POST);
+            }
         }
 
         if (isset($_GET['route'])) {
@@ -47,8 +51,6 @@ class Router
                 $this->customerController->deleteCustomer($_GET);
             } elseif ($_GET['route'] === "auth/register") {
                 $this->authController->register($_POST);
-            } elseif ($_GET['route'] === "auth/login") {
-                $this->authController->login($_POST);
             } elseif ($_GET['route'] === "auth/logout") {
                 $this->authController->logout();
             } elseif ($_GET['route'] === "user/account") {
