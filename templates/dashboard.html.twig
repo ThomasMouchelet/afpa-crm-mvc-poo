@@ -1,38 +1,62 @@
-{% extends "base.html.twig" %}
+{% extends "base.html.twig" %} {% block title %}
+<title>Dashboard</title>
+{% endblock %} {% block content %}
+<a href="?route=invoices/add" class="btn btn-primary">Add new invoices</a>
 
-{% block title %}
-	<title>Dashboard</title>
-{% endblock %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Sending At</th>
+      <th scope="col">Paid For</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invoice in invoices %}
+    <tr>
+      <th scope="row">xxxx</th>
+      <td>{{ invoice.amount }}</td>
+      <td>{{ invoice.sendingAt }}</td>
+      <td>{{ invoice.paidFor }}</td>
+      <td>{{ invoice.status }}</td>
+      <td>
+        <a
+          href="?route=invoices/edit&id={{ invoice.id }}"
+          class="btn btn-primary"
+          >Edit</a
+        >
+        <a
+          href="?route=invoices/delete&id={{ invoice.id }}"
+          class="delete btn btn-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %} {% block script %}
+<script>
+  let deleteBtnList = document.querySelectorAll(".delete");
 
-{% block content %}
-	<a href="?route=invoices/add" class="btn btn-primary">Add new invoices</a>
+  deleteBtnList.forEach((btn) => {
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Company Name</th>
-				<th scope="col">Amount</th>
-				<th scope="col">Sending At</th>
-				<th scope="col">Paid For</th>
-				<th scope="col">Status</th>
-				<th scope="col">Actions</th>
-			</tr>
-		</thead>
-		<tbody>
+      fetch(this.href)
+        .then((response) => {
+          this.closest("tr").remove();
+        })
+        .catch((error) => console.log(error));
+    });
+  });
 
-			{% for invoice in invoices %}
-				<tr>
-					<th scope="row">xxxx</th>
-					<td>{{ invoice.amount }}</td>
-					<td>{{ invoice.sendingAt }}</td>
-					<td>{{ invoice.paidFor }}</td>
-					<td>{{ invoice.status }}</td>
-					<td>
-						<button class="btn btn-primary">Edit</button>
-						<button class="btn btn-danger">Delete</button>
-					</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+  fetch("?route=invoices/getjson")
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+</script>
 {% endblock %}

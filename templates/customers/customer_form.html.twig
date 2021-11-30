@@ -6,13 +6,13 @@
 
 	<form class="mt-5" method="post">
 		<div class="mb-3">
-			<input type="email" class="form-control" name="email" placeholder="email" value="{% customer.email %}">
+			<input type="email" class="form-control" name="email" placeholder="email" value="{{ customer.email }}">
 		</div>
 		<div class="mb-3">
-			<input type="text" class="form-control" name="address" placeholder="address" value="{% customer.address %}">
+			<input type="text" class="form-control" name="address" placeholder="address" value="{{ customer.address }}">
 		</div>
 		<div class="mb-3">
-			<input type="text" class="form-control" name="companyName" placeholder="companyName" value="{% customer.companyname %}">
+			<input type="text" class="form-control" name="companyName" placeholder="companyName" value="{{ customer.companyname }}">
 		</div>
 		{% if editMode %}
 			<input type="submit" class="btn btn-primary" name="edit" value="edit">

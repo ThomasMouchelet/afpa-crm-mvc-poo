@@ -4,13 +4,13 @@ namespace App\src\Entity;
 
 class Invoice
 {
-    private $id;
-    private $amount;
-    private $sendingAt;
-    private $paidFor;
-    private $status;
-    private $customer_id;
-    private $user_id;
+    public $id;
+    public $amount;
+    public $sendingAt;
+    public $paidFor;
+    public $status;
+    public $customer_id;
+    public $user_id;
 
     /**
      * Get the value of id

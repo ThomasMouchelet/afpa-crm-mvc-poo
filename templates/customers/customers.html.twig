@@ -15,12 +15,12 @@
 		<tbody>
 			{% for customer in customers %}
 				<tr>
-					<td>{% customer.companyName %}</td>
-					<td>{% customer.email %}</td>
+					<td>{{ customer.companyName }}</td>
+					<td>{{ customer.email }}</td>
 					<td>xxxx</td>
 					<td>
-						<a href="?route=customers/edit&id={% customer.id %}" class="btn btn-primary">Edit</a>
-						<a href="?route=customers/delete&id={% customer.id %}" class="btn btn-danger">Delete</a>
+						<a href="?route=customers/edit&id={{ customer.id }}" class="btn btn-primary">Edit</a>
+						<a href="?route=customers/delete&id={{ customer.id }}" class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
 			{% endfor %}

@@ -15,8 +15,8 @@
 		<div class="mb-3">
 			<select name="customer_id" class="form-select">
 				{% for customer in customers %}
-					<option value="{% customer.id %}">
-						{% customer.companyName %}
+					<option value="{{ customer.id }}">
+						{{ customer.companyName }}
 					</option>
 				{% endfor %}
 			</select>

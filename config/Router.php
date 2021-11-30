@@ -53,6 +53,10 @@ class Router
                 $this->authController->logout();
             } elseif ($_GET['route'] === "user/account") {
                 $this->userController->account($_POST);
+            } elseif ($_GET['route'] === "invoices/delete") {
+                $this->invoiceController->delete($_GET);
+            } elseif ($_GET['route'] === "invoices/getjson") {
+                $this->invoiceController->getInvoicesJson();
             } else {
                 // 404
             }

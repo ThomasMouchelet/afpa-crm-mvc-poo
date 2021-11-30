@@ -54,4 +54,18 @@ class InvoiceController extends AbstractController
             'customers' => $customers
         ]);
     }
+
+    public function delete($get)
+    {
+        $this->invoiceRepository->delete($get['id']);
+
+        // header("Location: ?route=dashboard");
+    }
+
+    public function getInvoicesJson()
+    {
+        $invoices = $this->invoiceRepository->findAll();
+
+        echo json_encode($invoices);
+    }
 }
