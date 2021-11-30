@@ -50,7 +50,7 @@ class InvoiceController extends AbstractController
 
         $customers = $this->customerRepository->findAll();
 
-        $this->render("invoice_form", [
+        $this->render("invoices/invoice_form.html.twig", [
             'customers' => $customers
         ]);
     }

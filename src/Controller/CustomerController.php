@@ -26,7 +26,7 @@ class CustomerController extends AbstractController
     {
         $customers = $this->customerRepository->findAll();
 
-        $this->render("customers", [
+        $this->render("customers/customers.html.twig", [
             "customers" => $customers
         ]);
     }
@@ -60,7 +60,7 @@ class CustomerController extends AbstractController
             header("Location: ?route=customers");
         }
 
-        $this->render("customer_form", [
+        $this->render("customers/customer_form.html.twig", [
             'customer' => $customer,
             'editMode' => $customer->getId() !== NULL
         ]);

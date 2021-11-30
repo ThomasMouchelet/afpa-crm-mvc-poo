@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<a href="?route=customers/add" class="btn btn-primary">Add new customer</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Company Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Invoices</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for customer in customers %}
+				<tr>
+					<td>{% customer.companyName %}</td>
+					<td>{% customer.email %}</td>
+					<td>xxxx</td>
+					<td>
+						<a href="?route=customers/edit&id={% customer.id %}" class="btn btn-primary">Edit</a>
+						<a href="?route=customers/delete&id={% customer.id %}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

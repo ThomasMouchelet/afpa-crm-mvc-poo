@@ -30,7 +30,7 @@ class AuthController extends AbstractController
             header('Location: ?route=auth/login');
         }
 
-        $this->render('auth_register');
+        $this->render('auth/auth_register.html.twig');
     }
 
     public function login($post)
@@ -50,11 +50,11 @@ class AuthController extends AbstractController
 
                 header('Location: ?route=dashboard');
             } else {
-                $this->render('auth_login');
+                $this->render('auth/auth_login.html.twig');
             }
         }
 
-        $this->render('auth_login');
+        $this->render('auth/auth_login.html.twig');
     }
 
     public function logout()

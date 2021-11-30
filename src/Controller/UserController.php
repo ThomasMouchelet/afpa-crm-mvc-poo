@@ -37,7 +37,7 @@ class UserController extends AbstractController
             die();
         }
 
-        $this->render('user_form', [
+        $this->render('users/user_form.html.twig', [
             'user' => $user
         ]);
     }
