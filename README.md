@@ -14,3 +14,7 @@ php -S 127.0.0.1:8000 -t ./public
 composer init
 composer dump-autoload
 ```
+
+```
+vendor/bin/phpstan analyse
+```

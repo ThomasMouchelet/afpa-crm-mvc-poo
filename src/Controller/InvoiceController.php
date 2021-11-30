@@ -11,6 +11,7 @@ use App\src\Controller\AbstractController;
 class InvoiceController extends AbstractController
 {
     private $invoiceRepository;
+    private $customerRepository;
 
     public function __construct()
     {
