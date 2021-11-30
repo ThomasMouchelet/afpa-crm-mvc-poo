@@ -28,7 +28,7 @@ class InvoiceController extends AbstractController
     {
         $invoices = $this->invoiceRepository->findAll();
 
-        $this->render("dashboard", [
+        $this->render("dashboard.html.twig", [
             'invoices' => $invoices
         ]);
     }
